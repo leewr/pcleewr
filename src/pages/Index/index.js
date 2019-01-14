@@ -1,23 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { fetchData } from '../store'
+import { fetchData } from './load-data'
 // import './Home/Home.scss'
 
 class Home extends React.Component {
   componentDidMount() {
-    if (this.props.circuits.length <= 0) {
+    if (this.props.indexList.length <= 0) {
       console.log('fetchData')
       this.props.fetchData()
     }
   }
   render() {
-    const { circuits } = this.props
-    console.log('circuits', circuits)
+    const { indexList } = this.props
+    console.log('indexList', indexList)
     return (
       <div>
         <h2>F1 2018 Season Calendar</h2>
         <ul>
-          {circuits.list.map(({ id, title }) => (
+          {indexList.list.map(({ id, title }) => (
             <li key={id} onClick={this.getShow}>
               {title}
             </li>
@@ -34,7 +34,7 @@ class Home extends React.Component {
 Home.serverFetch = fetchData // static declaration of data requirements
 
 const mapStateToProps = state => ({
-  circuits: state.data
+  indexList: state.data
 })
 
 const mapDispatchToProps = {

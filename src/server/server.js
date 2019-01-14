@@ -6,19 +6,20 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter, matchPath } from 'react-router-dom'
 import { Provider as ReduxProvider } from 'react-redux'
 import routes from '../router'
-import createStore, { initializeSession } from '../store'
+import createStore from '../store'
 import Layout from '../comp/layout'
-import App from '../App'
+// import App from '../App'
 
 const app = express()
 
 app.use(express.static(path.resolve(__dirname, './dist/client')))
 
 app.get('/*', (req, res) => {
+  console.log('aa')
   const context = {}
   const store = createStore()
   console.log('localhost')
-  store.dispatch(initializeSession())
+  // store.dispatch(initializeSession())
 
   // const dataRequirements =
   //   routes

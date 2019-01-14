@@ -12,8 +12,9 @@ const config = require('../config')
 
 const compilerPromise = compiler => {
   return new Promise((resolve, reject) => {
-    compiler.plugin('done', stats => {
+    compiler.hooks.done.tap(compiler, stats => {
       if (!stats.hasErrors()) {
+        console.log('done')
         return resolve()
       }
       return reject(new Error('Compilation failed'))

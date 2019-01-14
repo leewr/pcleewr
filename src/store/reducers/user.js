@@ -1,5 +1,5 @@
 const initialState = {}
-export function user(state = initialState, action) {
+export default function user(state = initialState, action) {
     switch (action.type) {
         case 'GET_USER_RINFO':
             return state
